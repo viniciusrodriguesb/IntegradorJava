@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- PÁGINA DE DEPÓSITOS   -->
+	<%int tipo =(int)session.getAttribute("id_Descricao"); %>
+	
+	<form action="depositarServlet" method="POST">
+	
+		<label>Selecione a carteira que deseja utilizar: </label>
+		<input type="text" name="nomeC" id="nomeC"/>
+		
+		<label>Digite o valor que deseja depositar: </label>
+		<input type="number" name="saldoC" id="saldoC"/>
+		
+		<input type="submit" value="Depositar"/>
+	</form>
+	
+	
+</body>
+</html>

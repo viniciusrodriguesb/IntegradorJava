@@ -1,0 +1,24 @@
+package servico;
+
+import dao.CarteiraDAO;
+
+public class CarteiraServico {
+	CarteiraDAO carteira = new CarteiraDAO();
+
+	public boolean incluir(String id) {
+		return carteira.CadastrarCarteira();
+	}
+
+	public void consultar() {
+		return carteira.consultarCarteira();
+	}
+
+	public void alterar() {
+		return carteira.alterarCarteira();
+	}
+
+	public void excluir() {
+		return carteira.excluirCarteira(Integer.parseInt(id));
+	}
+
+}

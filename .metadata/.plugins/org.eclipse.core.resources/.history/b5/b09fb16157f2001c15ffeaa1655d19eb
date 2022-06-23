@@ -1,0 +1,63 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import modelo.Carteira;
+
+public class MovimentacaoDAO {
+	Connection cnx;
+
+	// INCLUSÃO DADOS DA MOVIMENTACAO NO BANCO
+	public boolean incluirCarteira(Carteira carteira) {
+		boolean resultado = true;
+		int retornoQuery;
+
+		cnx = DAO.createConnection();
+		String sql = "INSERT INTO tb_carteira (nome, saldo) VALUES (?, ?)";
+
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+
+			ps.setString(1, carteira.getNome());
+			ps.setDouble(2, carteira.getSaldo());
+
+			retornoQuery = ps.executeUpdate();
+
+			if (retornoQuery <= 0) {
+				resultado = false;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	
+	// EXCLUSÃO DE DADOS DA MOVIMENTACAO NO BANCO
+	public boolean excluirCarteira(int id) {
+		boolean resultado = true;
+		int retornoQuery;
+
+		cnx = DAO.createConnection();
+		String sql = "DELETE FROM tb_carteira WHERE ID = ?";
+
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+
+			ps.setInt(1, id);
+
+			retornoQuery = ps.executeUpdate();
+
+			if (retornoQuery <= 0) {
+				resultado = false;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+}

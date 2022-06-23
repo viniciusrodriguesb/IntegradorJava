@@ -1,0 +1,8 @@
+package servico;
+
+import dao.CarteiraDAO;
+
+public class CarteiraServico {
+	CarteiraDAO carteira = new CarteiraDAO();
+	
+}

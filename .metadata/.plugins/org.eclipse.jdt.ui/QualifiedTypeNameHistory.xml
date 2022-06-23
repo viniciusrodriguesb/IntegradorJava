@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="modelo.Movimentacoes"/>
+    <fullyQualifiedTypeName name="dao.CarteiraDAO"/>
+    <fullyQualifiedTypeName name="dao.UsuarioDAO"/>
+    <fullyQualifiedTypeName name="java.util.Objects"/>
+    <fullyQualifiedTypeName name="servico.UsuarioServico"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="modelo.Carteira"/>
+    <fullyQualifiedTypeName name="servico.CarteiraServico"/>
+    <fullyQualifiedTypeName name="modelo.Movimentacao"/>
+    <fullyQualifiedTypeName name="modelo.Usuario"/>
+    <fullyQualifiedTypeName name="modelo.tipoMovimentacao"/>
+</qualifiedTypeNameHistroy>

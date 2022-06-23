@@ -1,0 +1,128 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.Carteira;
+import modelo.Movimentacao;
+import modelo.Usuario;
+import modelo.tipoMovimentacao;
+
+public class MovimentacaoDAO {
+	Connection cnx;
+
+	// INCLUSÃO DADOS DA MOVIMENTACAO NO BANCO
+	public boolean incluirMovimentacao(Movimentacao mov) {
+		boolean resultado = true;
+		int retornoQuery;
+		tipoMovimentacao t = new tipoMovimentacao();
+		Usuario u = new Usuario();
+
+		cnx = DAO.createConnection();
+		String sql = "INSERT INTO tb_movimentacao(saldo, tipoMovimentacao, id_usuario, id_tipo) VALUES (?, ?, ?, ?)";
+
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+
+			ps.setDouble(1,mov.getSaldo());
+			ps.setString(2, mov.getTipoMovimentacao());
+			ps.setInt(3, mov.getId_usuario());
+			ps.setInt(4, mov.getId_tipo());
+
+			retornoQuery = ps.executeUpdate();
+
+			if (retornoQuery <= 0) {
+				resultado = false;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	
+	// EXCLUSÃO DE DADOS DA MOVIMENTACAO NO BANCO
+	public boolean excluirCarteira(int id) {
+		boolean resultado = true;
+		int retornoQuery;
+
+		cnx = DAO.createConnection();
+		String sql = "DELETE FROM tb_carteira WHERE ID = ?";
+
+		try {
+			PreparedStatement ps = cnx.prepareStatement(sql);
+
+			ps.setInt(1, id);
+
+			retornoQuery = ps.executeUpdate();
+
+			if (retornoQuery <= 0) {
+				resultado = false;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+	
+	// LISTAR OS DADOS QUE ESTÃO NO BANCO DA CARTEIRA
+		public List<Carteira> listar() {
+			List<Carteira> listaDeCarteiras = new ArrayList<Carteira>();
+			ResultSet rs = null;
+			Carteira carteira = null;
+
+			cnx = DAO.createConnection();
+
+			String sql = "SELECT * FROM tb_carteira";
+
+			try {
+				PreparedStatement ps = cnx.prepareStatement(sql);
+
+				rs = ps.executeQuery();
+
+				while (rs.next()) {
+					carteira = new Carteira();
+
+					carteira.setId(rs.getInt("id"));
+					carteira.setNome(rs.getString("nome"));
+					carteira.setSaldo(rs.getDouble("saldo"));
+
+					listaDeCarteiras.add(carteira);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return listaDeCarteiras;
+		}
+		
+		public boolean sacar(Carteira carteira) {
+			boolean resultado = true;
+			int retornoQuery;
+
+			cnx = DAO.createConnection();
+			String sql = "INSERT INTO tb_carteira (nome, saldo) VALUES (?, ?)";
+
+			try {
+				PreparedStatement ps = cnx.prepareStatement(sql);
+
+				ps.setString(1, carteira.getNome());
+				ps.setDouble(2, carteira.getSaldo() + carteira.getSaldo());
+
+				retornoQuery = ps.executeUpdate();
+
+				if (retornoQuery <= 0) {
+					resultado = false;
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultado;
+		}
+}

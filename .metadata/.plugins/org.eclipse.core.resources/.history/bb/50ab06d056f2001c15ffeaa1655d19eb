@@ -1,0 +1,6 @@
+package modelo;
+
+public class tipoMovimentacao {
+	private int id;
+	private String descricao;
+}

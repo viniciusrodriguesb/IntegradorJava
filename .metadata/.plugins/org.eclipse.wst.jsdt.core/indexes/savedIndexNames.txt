@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\Vinicius Bastos\Desktop\projetoCarteira\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+269019947.index
+611734322.index
+3967152680.index
+709180613.index
+3295291075.index
+1914548482.index
+3729159026.index
+611734322.index

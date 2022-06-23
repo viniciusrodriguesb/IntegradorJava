@@ -1,0 +1,36 @@
+// CLASSE DESTINADA PARA TODAS AS MOVIMENTAÇÕES QUE TERÁ NO SISTEMA
+
+package modelo;
+
+public class Movimentacoes {
+	private int id;
+	private double saldo;
+	private String tipoMovimentacao;
+	private int id_usuario;
+	private int id_tipo;
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "Movimentacoes [id=" + id + ", nome=" + ", saldo=" + saldo + ", saque=" + "]";
+	}
+}

@@ -1,0 +1,25 @@
+package servico;
+
+import dao.CarteiraDAO;
+import modelo.Carteira;
+
+public class CarteiraServico {
+	CarteiraDAO carteira = new CarteiraDAO();
+
+	public boolean incluir(Carteira ctr) {
+		return carteira.incluirCarteira(ctr);
+	}
+
+	public void consultar() {
+		return carteira.consultarCarteira();
+	}
+
+	public void alterar() {
+		return carteira.alterarCarteira();
+	}
+
+	public void excluir() {
+		return carteira.excluirCarteira(Integer.parseInt(id));
+	}
+
+}
